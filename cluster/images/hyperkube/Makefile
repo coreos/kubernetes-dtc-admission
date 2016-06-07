@@ -90,6 +90,8 @@ ifeq ($(ARCH),amd64)
 	cd ${TEMP_DIR} && ${SED_CMD} "/CROSS_BUILD_/d" Dockerfile
 	# Download CNI
 	curl -sSL --retry 5 https://storage.googleapis.com/kubernetes-release/network-plugins/cni-${CNI_RELEASE}.tar.gz | tar -xz -C ${TEMP_DIR}/cni
+	curl -sSL --retry 5 -o  ${TEMP_DIR}/cni/bin/calico https://github.com/projectcalico/calico-cni/releases/download/v1.3.1/calico
+	chmod +x ${TEMP_DIR}/cni/bin/calico
 else
 	# When cross-building, only the placeholder "CROSS_BUILD_" should be removed
 	# Register /usr/bin/qemu-ARCH-static as the handler for ARM binaries in the kernel
