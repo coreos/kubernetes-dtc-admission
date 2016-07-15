@@ -2339,3 +2339,4 @@ func getOSReleaseInfo() (map[string]string, error) {
 	}
 	return result, nil
 }
+
